@@ -19,3 +19,37 @@
 body {
   background: #A8A8A8;
 }
+
+.btn-success {
+  background: #CCFF00;
+  color: black;
+  border: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.text-muted {
+  color: white;
+}
+
+.main_nav {
+  background: #CCFF00;
+  border: none;
+}
+
+.text_nav {
+  color: #A0A0A0;
+  text-decoration: none;
+}
+
+.text_nav :visited {
+  color: #A0A0A0;
+  text-decoration: none;
+}
+
+.text_nav :hover {
+  color: #C8C8C8;
+  text-decoration: none;
+}

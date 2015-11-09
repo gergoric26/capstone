@@ -1,2 +1,9 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1>New Item</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    
+    <%= render partial: 'form', locals: { item: @item } %>
+    
+  </div>
+</div>
