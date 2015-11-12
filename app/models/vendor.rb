@@ -6,7 +6,12 @@ class Vendor < ActiveRecord::Base
 
   has_many :items
 
+
   before_save { self.role ||= :user }
 
   enum role: [:user, :vendor, :admin]
+
+
+
+  #scope :visible_to, ->(vendor) { vendor ? all : where(@item.vendor) }
 end

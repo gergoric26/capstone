@@ -13,21 +13,27 @@
     <div class="col-md-12">
       
       <% @items.each do |item| %>
+
         <div class="media">
           <div class="media-body"> 
 
-            <h4 class="media-heading col-md-3">
+            <div class="col-md-2">
+              <%= image_tag item.image.url(:thumb) %>
+            </div>
+           
+
+            <h4 class="media-heading col-md-2">
               <%= item.title %>
             </h4>
 
 
-            <small class="col-md-3">
+            <small class="col-md-2">
               <%= item.description %>
             </small>
 
 
 
-            <small class="col-md-3 center">
+            <small class="col-md-2 center">
               <%= item.price %>
             </small>
 

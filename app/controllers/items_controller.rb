@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    #@items = policy_scope(Item)
   end
 
   def show
@@ -56,7 +57,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:picture, :title, :description, :price)
+    params.require(:item).permit(:image, :title, :description, :price)
   end
 
 end
