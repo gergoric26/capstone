@@ -5,4 +5,8 @@ class Vendor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :items
+
+  before_save { self.role ||= :user }
+
+  enum role: [:user, :vendor, :admin]
 end

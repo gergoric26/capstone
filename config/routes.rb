@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pages/vendor'
+
   get 'items/index'
 
   resources :items
