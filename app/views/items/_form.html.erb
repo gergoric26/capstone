@@ -1,0 +1,24 @@
+<%= form_for @item do |f| %>  
+
+
+  <%= f.label :picture %>
+  <%= f.text_field :picture, class: 'form-control', placeholder: "Upload Item picture" %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control', placeholder: "Enter Item title" %>
+  
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control', placeholder: "Enter Item description" %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price, class: 'form-control', placeholder: "Enter Item price" %>
+
+
+</br>
+
+
+  <div class="form-group">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  </div>
+
+<% end %>
