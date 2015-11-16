@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_vendor!
 
   def index
-    @items = Item.all
-    #@items = policy_scope(Item)
+    @vendor = Vendor.find(params[:vendor_id])
+    @items = @vendor.items
   end
 
   def show

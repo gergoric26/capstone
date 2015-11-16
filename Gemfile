@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'paperclip', '~> 4.3', '>= 4.3.1'
+gem "pundit"
 
 group :production do
   gem 'pg'

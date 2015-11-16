@@ -20,7 +20,7 @@
 
   </br>
    
-  <%= link_to "Switch to all products", items_index_path, class: 'btn btn-success' %>
+  <%= link_to "Switch to all products", all_items_all_path, class: 'btn btn-success' %> 
 
   <div class="row">
     <div class="col-md-12">
@@ -33,7 +33,7 @@
               <%= vendor.name %>
             </h4>
 
-            <%= link_to "Vendor products", items_index_path(@vendor), class: 'btn btn-success' %>
+            <%= link_to "Vendor products", vendor_items_path(vendor), class: 'btn btn-success' %>
 
           </div>
         </div>

@@ -12,6 +12,4 @@ class Vendor < ActiveRecord::Base
   enum role: [:user, :vendor, :admin]
 
 
-
-  #scope :visible_to, ->(vendor) { vendor ? all : where(@item.vendor) }
 end
