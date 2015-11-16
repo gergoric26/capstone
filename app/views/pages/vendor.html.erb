@@ -1,0 +1,48 @@
+<div class="container">
+  </br>
+  
+  <nav class="navbar navbar-default main_nav">
+    <div class="container-fluid">
+      <ul class="nav nav-tabs text_nav">
+        <li><h4><%= current_vendor.name %></h4></li>
+        
+
+          <% if vendor_signed_in? %>
+            <li class="pull-right text_link"><h4><%= link_to "Cart", root_path %> | <%= link_to "Profile", edit_vendor_registration_path %> | <%= link_to "Sign Out", destroy_vendor_session_path, method: :delete %></h4></li>
+          <% end %>
+
+        
+      </ul>
+    </div>
+  </nav>
+
+  <h1>Vendors</h1>
+
+  </br>
+   
+  <%= link_to "Switch to all products", all_items_all_path, class: 'btn btn-success' %> 
+
+  <div class="row">
+    <div class="col-md-12">
+      
+      <% @vendors.each do |vendor| %>
+        <div class="media">
+          <div class="media-body"> 
+
+            <h4 class="media-heading col-md-3">
+              <%= vendor.name %>
+            </h4>
+
+            <%= link_to "Vendor products", vendor_items_path(vendor), class: 'btn btn-success' %>
+
+          </div>
+        </div>
+
+
+        </br>
+        
+      <% end %>
+
+    </div>
+  </div>
+</div>
