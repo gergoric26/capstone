@@ -8,7 +8,7 @@
         
 
           <% if vendor_signed_in? %>
-            <li class="pull-right text_link"><h4><%= link_to "Your Orders", root_path %> | <%= link_to "Profile", edit_vendor_registration_path %> | <%= link_to "Sign Out", destroy_vendor_session_path, method: :delete %></h4></li>
+            <li class="pull-right text_link"><h4><%= link_to "Cart", root_path %> | <%= link_to "Profile", edit_vendor_registration_path %> | <%= link_to "Sign Out", destroy_vendor_session_path, method: :delete %></h4></li>
           <% end %>
 
         

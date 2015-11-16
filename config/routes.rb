@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'cart/list'
+
   get 'all_items/all'
 
   get 'pages/vendor'
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :items
 
-  root 'home#index'
+  root 'home#index' 
 
-  devise_for :vendors
+  devise_for :vendors 
 end
