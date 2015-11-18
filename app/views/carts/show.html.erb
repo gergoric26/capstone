@@ -1,0 +1,11 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h2>Cart</h2>
+
+<ul>
+  <% @order_items.each do |item| %>
+    <li><%= item.title %></li>
+  <% end %>
+</ul>

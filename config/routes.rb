@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'cart/list'
 
   get 'all_items/all'
 
@@ -13,6 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :items
+
+  resources :order_items
+
+  resources :carts
 
   root 'home#index' 
 
