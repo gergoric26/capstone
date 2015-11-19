@@ -50,7 +50,7 @@
               <%= item.price %>
             </small>
 
-            <%= link_to "Add to cart", order_items_path(item_id: item), class: 'btn btn-success' %> 
+            <%= button_to "Add to cart", line_items_path(item_id: item), class: 'btn btn-success' %> 
 
           </div>
         </div>
