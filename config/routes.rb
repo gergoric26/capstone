@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'cart/list'
 
+  resources :line_items
+  resources :carts
   get 'all_items/all'
 
   get 'pages/vendor'
