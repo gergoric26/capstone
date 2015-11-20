@@ -47,7 +47,7 @@
 
 
             <small class="col-md-2 center">
-              <%= item.price %>
+              <%= number_to_currency(item.price) %>
             </small>
 
             <%= button_to "Add to cart", line_items_path(item_id: item), class: 'btn btn-success' %> 
