@@ -3,19 +3,14 @@
 <% end %>
 
 <h2>Cart</h2>
-<table>
-  <% @cart.line_items.each do |item| %>
-  <tr>
-    <td><%= item.quantity %> &times; </td>
-    <td><%= item.item.title %></td>
-    <td><%= number_to_currency(item.total_price) %></td>
-  </tr>
-  <% end %>
-
-  <tr>
-    <td>Total</td>
-    <td><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
-</table>
 
 <%= button_to "Empty cart", @cart, method: :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-success' %>
+
+</br>
+
+<%= render 'cart' %>
+
+</br>
+
+<%= button_to "Place an order", new_order_path, method: :get, class: 'btn btn-success' %>
+

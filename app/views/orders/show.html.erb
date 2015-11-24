@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+
+  <strong>Order:</strong>
+    
+    <div>
+      <%= current_vendor.name %>
+    </div>
+
+    <div>
+      <%= current_vendor.address %> | <%= current_vendor.state %> | <%= current_vendor.zipcode %>
+    </div>
+
+    <div>
+      <%= current_vendor.phone_number %> | <%= current_vendor.fax_number %>
+    </div>
+
+    </br>
+
+    <div>
+      <%= render 'carts/cart' %>
+    </div>

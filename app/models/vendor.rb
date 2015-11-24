@@ -5,6 +5,7 @@ class Vendor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :items
+  has_many :orders
 
 
   before_save { self.role ||= :user }

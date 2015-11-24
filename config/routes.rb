@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-  resources :line_items
-  resources :carts
   get 'all_items/all'
 
   get 'pages/vendor'
@@ -12,6 +10,15 @@ Rails.application.routes.draw do
   resources :vendors, only: [:index] do
     resources :items
   end
+
+  resources :vendors do
+    resources :orders
+  end
+
+  resources :line_items
+  resources :carts
+
+  resources :orders
 
   resources :items
 
