@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'your_orders/all_orders'
+
+  get 'your_orders/order'
+
   get 'all_items/all'
 
   get 'pages/vendor'
@@ -9,9 +13,6 @@ Rails.application.routes.draw do
 
   resources :vendors, only: [:index] do
     resources :items
-  end
-
-  resources :vendors do
     resources :orders
   end
 

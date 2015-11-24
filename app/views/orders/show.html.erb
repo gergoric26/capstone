@@ -4,19 +4,30 @@
   <strong>Order:</strong>
     
     <div>
-      <%= current_vendor.name %>
+      <%= @order.vendor.name %>
     </div>
 
     <div>
-      <%= current_vendor.address %> | <%= current_vendor.state %> | <%= current_vendor.zipcode %>
+      <%= @order.vendor.address %> | <%= @order.vendor.state %> | <%= @order.vendor.zipcode %>
     </div>
 
     <div>
-      <%= current_vendor.phone_number %> | <%= current_vendor.fax_number %>
+      <%= @order.vendor.phone_number %> | <%= @order.vendor.fax_number %>
     </div>
 
     </br>
 
-    <div>
-      <%= render 'carts/cart' %>
-    </div>
+    <table>
+      <% @order.line_items.each do |item| %>
+      <tr>
+        <td><%= item.quantity %> &times; </td>
+        <td><%= item.item.title %></td>
+        <td><%= number_to_currency(item.total_price) %></td>
+      </tr>
+      <% end %>
+
+      <tr>
+        <td>Total</td>
+        <td><%= number_to_currency(@order.total_price) %></td>
+      </tr>
+    </table>

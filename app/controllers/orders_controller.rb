@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   def new
@@ -16,11 +17,12 @@ class OrdersController < ApplicationController
       redirect_to all_items_all_path, notice: "Your cart is empty!"
       return
     end
-    @order = Order.new
+    @order = Order.new(vendor_id: current_vendor.id)
+
   end
 
   def create
-    @order = Order.new(params[:vendor_id])
+    @order = Order.new(order_params)
     @order.vendor = current_vendor
     @order.add_line_items_form_cart(@cart)
     

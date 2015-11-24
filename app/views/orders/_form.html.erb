@@ -1,5 +1,6 @@
 <%= form_for(@order) do |f| %>
-
+  
+  <%= f.hidden_field :vendor_id, value: current_vendor.id  %>
     <div>
       <%= current_vendor.name %>
     </div>
