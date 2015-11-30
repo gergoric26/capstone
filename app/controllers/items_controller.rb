@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
-  before_action :authenticate_vendor!
+  before_action :authenticate!
+  
 
   def index
     @vendor = Vendor.find(params[:vendor_id])

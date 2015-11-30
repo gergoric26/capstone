@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
   get 'your_orders/all_orders'
-
-  get 'your_orders/order'
+  #passing your_order id and (as:) adding name
+  get 'your_orders/:id', controller: 'your_orders', action: 'order', as: 'your_order'
 
   get 'all_items/all'
 
@@ -15,6 +16,11 @@ Rails.application.routes.draw do
     resources :items
     resources :orders
   end
+
+  resources :users do
+    resources :orders
+  end
+
 
   resources :line_items
   resources :carts

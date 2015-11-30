@@ -1,2 +1,30 @@
-<h1>YourOrders#order</h1>
-<p>Find me in app/views/your_orders/order.html.erb</p>
+<strong>Order:</strong>
+    
+    <div>
+      <%= @order.user.name %>
+    </div>
+
+    <div>
+      <%= @order.user.address %> | <%= @order.user.state %> | <%= @order.user.zipcode %>
+    </div>
+
+    <div>
+      <%= @order.user.phone_number %> | <%= @order.user.fax_number %>
+    </div>
+
+    </br>
+
+    <table>
+      <% @vendor_order.line_items.each do |item| %>
+      <tr>
+        <td><%= item.quantity %> &times; </td>
+        <td><%= item.item.title %></td>
+        <td><%= number_to_currency(item.total_price) %></td>
+      </tr>
+      <% end %>
+
+      <tr>
+        <td>Total</td>
+        <td><%= number_to_currency(@vendor_order.total_price) %></td>
+      </tr>
+    </table>

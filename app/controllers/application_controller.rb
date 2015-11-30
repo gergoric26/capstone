@@ -20,6 +20,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authenticate!
+    unless current_vendor || current_user
+      flash[:error] = "You must be logged in to do that"
+      redirect_to new_session_path
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :address, :state, :zipcode, :phone_number, :fax_number, :password, :password_confirmation) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :address, :state, :zipcode, :phone_number, :fax_number, :password, :password_confirmation) }

@@ -1,16 +1,16 @@
 <%= form_for(@order) do |f| %>
   
-  <%= f.hidden_field :vendor_id, value: current_vendor.id  %>
+  <%= f.hidden_field :user_id, value: current_user.id  %>
     <div>
-      <%= current_vendor.name %>
+      <%= current_user.name %>
     </div>
 
     <div>
-      <%= current_vendor.address %> | <%= current_vendor.state %> | <%= current_vendor.zipcode %>
+      <%= current_user.address %> | <%= current_user.state %> | <%= current_user.zipcode %>
     </div>
 
     <div>
-      <%= current_vendor.phone_number %> | <%= current_vendor.fax_number %>
+      <%= current_user.phone_number %> | <%= current_user.fax_number %>
     </div>
 
     </br>

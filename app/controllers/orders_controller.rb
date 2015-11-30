@@ -4,8 +4,8 @@ class OrdersController < ApplicationController
   before_action :set_cart, only:[:new, :create]
 
   def index
-    @vendor = Vendor.find(params[:vendor_id])
-    @orders = @vendor.orders
+    @user = User.find(params[:user_id])
+    @orders = @user.orders
   end
 
   def show
@@ -17,19 +17,22 @@ class OrdersController < ApplicationController
       redirect_to all_items_all_path, notice: "Your cart is empty!"
       return
     end
-    @order = Order.new(vendor_id: current_vendor.id)
+    @order = Order.new(user_id: current_user.id)
 
   end
 
   def create
     @order = Order.new(order_params)
-    @order.vendor = current_vendor
+    @order.user = current_user
     @order.add_line_items_form_cart(@cart)
     
     if @order.save
+      #adding vendor_id to order
+      vendor_order = @order.line_items.group_by{|line_item| line_item.item.vendor}.each {|vendor, line_items| vendor.vendor_orders.create(order: @order, line_items: line_items)}
+      
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
-      redirect_to vendor_orders_path(current_vendor), notice: "Thank you for placing the order."
+      redirect_to user_orders_path(current_user), notice: "Thank you for placing the order."
     else
       flash[:error] = "Error placing the order. Please try again."
       render :new
@@ -43,7 +46,7 @@ class OrdersController < ApplicationController
     
     if @order.save
       flash[:notice] = "Order was updated."
-      redirect_to vendor_orders_path(current_vendor)
+      redirect_to user_orders_path(current_user)
     else
       flash[:error] = "There was an error updating the item. Please try again."
       render :edit
@@ -52,7 +55,6 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    
   end
 
   def destroy
@@ -60,7 +62,7 @@ class OrdersController < ApplicationController
     
      if @order.destroy
        flash[:notice] = "Order was deleted successfully."
-       redirect_to vendor_items_path(current_vendor)
+       redirect_to user_orders_path(current_user)
      else
        flash[:error] = "There was an error deleting the order."
        render :index
@@ -70,7 +72,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:vendor_id)
+    params.require(:order).permit(:vendor_id, :user_id, :line_item_id)
   end
 
 end

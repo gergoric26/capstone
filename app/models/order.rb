@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :vendor
+  belongs_to :user
   has_many :line_items, dependent: :destroy
 
   def add_line_items_form_cart(cart)

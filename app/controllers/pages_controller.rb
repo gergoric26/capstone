@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   
-  before_action :authenticate_vendor!
+  before_action :authenticate_user!
 
   def vendor
     @vendors = Vendor.all
