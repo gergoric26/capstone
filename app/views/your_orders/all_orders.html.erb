@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Orders</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendor_orders.each do |vendor_order| %>
+      <tr>
+        <td><%= vendor_order.created_at %> | </td>
+        
+        <td> <%= link_to 'Show', your_order_path(id: vendor_order.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

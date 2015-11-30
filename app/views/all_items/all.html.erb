@@ -1,20 +1,7 @@
 <div class="container">
   </br>
   
-  <nav class="navbar navbar-default main_nav">
-    <div class="container-fluid">
-      <ul class="nav nav-tabs text_nav">
-        <li><h4><%= current_vendor.name %></h4></li>
-        
-
-          <% if vendor_signed_in? %>
-            <li class="pull-right text_link"><h4><%= link_to "Cart", root_path %> | <%= link_to "Profile", edit_vendor_registration_path %> | <%= link_to "Sign Out", destroy_vendor_session_path, method: :delete %></h4></li>
-          <% end %>
-
-        
-      </ul>
-    </div>
-  </nav>
+ <%= render 'items/nav' %>
   
   <h1>Items</h1>
 
