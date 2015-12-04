@@ -4,7 +4,7 @@
         <ul class="nav nav-tabs text_nav">
           <li><h4><%= current_user.name %></h4></li>
             
-              <li class="pull-right text_link"><h4><%= link_to "Cart", root_path %> | <%= link_to "Profile", edit_user_registration_path %> | <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></h4></li>
+              <li class="pull-right text_link"><h4><%= link_to "Cart", cart_path(@cart) %> | <%= link_to "Your orders", user_orders_path(current_user) %> | <%= link_to "Profile", edit_user_registration_path %> | <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></h4></li>
         </ul>
       </div>
     </nav>

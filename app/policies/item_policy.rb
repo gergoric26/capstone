@@ -10,25 +10,25 @@ class ItemPolicy
 #    false
 #  end
 
-  def create?
-    current_vendor.vendor?
-  end
+#  def create?
+##    current_vendor.vendor?
+#  end
 
-  def new?
-    create?
-  end
+#  def new?
+#    create?
+#  end
 
-  def update?
-    current_vendor.vendor?
-  end
+#  def update?
+#    current_vendor.vendor?
+#  end
 
-  def edit?
-    update?
-  end
+#  def edit?
+#    update?
+#  end
 
-  def destroy?
-    current_vendor.vendor?
-  end
+#  def destroy?
+#    current_vendor.vendor?
+#  end
 
 #  def scope
 #    Pundit.policy_scope!(user, record.class)

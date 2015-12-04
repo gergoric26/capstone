@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   
   before_action :authenticate!
+  include CurrentCart
+  before_action :set_cart
   
 
   def index
@@ -13,13 +15,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    authorize @item
+    #authorize @item
   end
 
   def create
     @item = Item.new(item_params)
     @item.vendor = current_vendor
-    authorize @item
+    #authorize @item
     if @item.save
       redirect_to vendor_items_path(current_vendor), notice: "Item was saved successfully."
     else
@@ -31,7 +33,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.assign_attributes(item_params)
-    authorize @item
+    #authorize @item
     if @item.save
       flash[:notice] = "Item was updated."
       redirect_to vendor_items_path(current_vendor)
@@ -43,12 +45,12 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    authorize @item
+    #authorize @item
   end
 
   def destroy
     @item = Item.find(params[:id])
-    authorize @item
+    #authorize @item
      if @item.destroy
        flash[:notice] = "\"#{@item.title}\" was deleted successfully."
        redirect_to vendor_items_path(current_vendor)
@@ -61,7 +63,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :title, :description, :price, :vendor_id)
+    params.require(:item).permit(:image, :title, :description, :price, :vendor_id, :quantity)
   end
 
 end

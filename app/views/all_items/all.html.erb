@@ -3,7 +3,7 @@
 
   </br>
 
-  <%= link_to "New item", new_item_path, class: 'btn btn-success' %> | <%= link_to "Switch to all Vendors", pages_vendor_path, class: 'btn btn-success' %>
+  <%= link_to "Switch to all Vendors", pages_vendor_path, class: 'btn btn-success' %>
    
   <div class="row">
     <div class="col-md-12">
@@ -32,9 +32,19 @@
             <small class="col-md-2 center">
               <%= number_to_currency(item.price) %>
             </small>
+ 
+            <div class="col-md-2 center">
+              <%= form_for(@line_item) do |f| %>
+  
+                  <%= f.number_field :quantity, value: 1, min: '1', style: 'float: left; width: 25%; display: block' %>
+                  <%= f.hidden_field :item_id, value: item.id %>
+                  <%= f.submit "Add to cart", class: 'btn btn-success' %> 
 
-            <%= button_to "Add to cart", line_items_path(item_id: item), class: 'btn btn-success' %> 
-
+              <% end %>
+              
+              
+            </div>
+            
           </div>
         </div>
 
