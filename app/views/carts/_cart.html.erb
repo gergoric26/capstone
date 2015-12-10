@@ -1,14 +1,13 @@
-<table>
+<table class="table">
   <% @cart.line_items.each do |item| %>
   <tr>
     <td><%= item.quantity %> &times; </td>
     <td><%= item.item.title %></td>
+    <td></td>
     <td><%= number_to_currency(item.total_price) %></td>
+    <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
-
-  <tr>
-    <td>Total</td>
-    <td><%= number_to_currency(@cart.total_price) %></td>
-  </tr>
 </table>
+<hr width="200" align="left">
+<h4>Total <%= number_to_currency(@cart.total_price) %></h4>

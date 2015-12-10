@@ -23,7 +23,7 @@ class LineItemsController < ApplicationController
   
   def create
     item = Item.find(params[:item_id])
-    @line_item = @cart.add_item(item.id)
+    @line_item = @cart.add_item(item.id, params[:quantity])
 
     respond_to do |format|
       if @line_item.save
@@ -52,7 +52,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to @line_item.cart, notice: 'Line item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class LineItemsController < ApplicationController
 
 
     def line_item_params
-      params.require(:line_item).permit(:item_id)
+      params.require(:line_item).permit(:item_id, :quantity)
     end
 end

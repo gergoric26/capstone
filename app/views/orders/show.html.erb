@@ -4,30 +4,28 @@
   <strong>Order:</strong>
     
     <div>
-      <%= @order.user.name %>
+      <h4>User: <%= @order.user.name %></h4>
     </div>
 
     <div>
-      <%= @order.user.address %> | <%= @order.user.state %> | <%= @order.user.zipcode %>
+      <h5>Address: <%= @order.user.address %>, <%= @order.user.state %>, <%= @order.user.zipcode %><h5>
     </div>
 
     <div>
-      <%= @order.user.phone_number %> | <%= @order.user.fax_number %>
+      <h5>Phone Number: <%= @order.user.phone_number %> | Fax Number: <%= @order.user.fax_number %></h5>
     </div>
 
     </br>
 
-    <table>
-      <% @order.line_items.each do |item| %>
-      <tr>
-        <td><%= item.quantity %> &times; </td>
-        <td><%= item.item.title %></td>
-        <td><%= number_to_currency(item.total_price) %></td>
-      </tr>
-      <% end %>
 
-      <tr>
-        <td>Total</td>
-        <td><%= number_to_currency(@order.total_price) %></td>
-      </tr>
-    </table>
+<table class="table">
+  <% @order.line_items.each do |item| %>
+  <tr>
+    <td><%= item.quantity %> &times; </td>
+    <td><%= item.item.title %></td>
+    <td><%= number_to_currency(item.total_price) %></td>
+  </tr>
+  <% end %>
+</table>
+<hr width="200" align="left">
+<h4>Total <%= number_to_currency(@order.total_price) %></h4>

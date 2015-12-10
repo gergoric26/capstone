@@ -1,0 +1,11 @@
+<%= form_for line_item do |f| %>
+  
+    <%= f.number_field :quantity, value: 1, min: '1', style: 'float: left; width: 25%; display: block' %>
+    <%= f.hidden_field :item_id, value: item.id %>
+    <%= f.submit "Add to cart", class: 'btn btn-success' %> 
+
+<% end %>
+
+
+<!--s(item_id: item)
+    <!--<%= render #{}"items/item_row", item: item, line_item: @line_item %>-->

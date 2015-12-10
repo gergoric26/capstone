@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   include CurrentCart
-  before_action :set_cart, only:[:new, :create]
+  before_action :set_cart, only:[:new, :create, :index, :show]
 
   def index
     @user = User.find(params[:user_id])
@@ -40,22 +40,7 @@ class OrdersController < ApplicationController
   end
 
 
-  def update
-    @order = Order.find(params[:id])
-    @order.assign_attributes(order_params)
-    
-    if @order.save
-      flash[:notice] = "Order was updated."
-      redirect_to user_orders_path(current_user)
-    else
-      flash[:error] = "There was an error updating the item. Please try again."
-      render :edit
-    end
-  end
-
-  def edit
-    @order = Order.find(params[:id])
-  end
+ 
 
   def destroy
     @order = Order.find(params[:id])

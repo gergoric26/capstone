@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   include Pundit
+  include CurrentCart
+  before_action :set_cart, only:[:edit, :update]
 
   def pundit_user
     current_user = current_vendor 
@@ -10,6 +12,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path(resource)
     if resource.is_a?(Vendor) 
       vendor_items_path(resource)
+    end
+  end
+
+  def after_sign_in_path(resource)
+    if resource.is_a?(User) 
+      pages_vendor_path(resource)
     end
   end
 
