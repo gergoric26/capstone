@@ -39,7 +39,15 @@
             </small>
 
             <% if user_signed_in? %>
-            <%= button_to "Add to cart", line_items_path(item_id: item), class: 'btn btn-success' %>
+              <div class="col-md-2 center">
+                <%= form_tag(controller: 'line_items', action: 'create', item_id: item) do %>
+    
+                    <input type="text" id="quantity" name="quantity" class="col-md-4">
+                    <%= hidden_field_tag :item_id, value: item.id %>
+                    <%= submit_tag "Add to cart", class: 'btn btn-success' %> 
+
+              <% end %>   
+              </div>
             <% end %>
 
             <% if vendor_signed_in? %>
